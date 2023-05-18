@@ -11,6 +11,6 @@ export class Home extends BaseScreen {
 
 	render() {
 		const element = renderService.htmlToElement(template, [], styles)
-		return element.outerHTML
+		return element
 	}
 }
