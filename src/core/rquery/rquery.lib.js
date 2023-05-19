@@ -140,6 +140,16 @@ class RQuery {
 
 	/* STYLES */
 
+	show() {
+		this.element.style.removeProperty('display')
+		return this
+	}
+
+	hide() {
+		this.element.style.display = 'none'
+		return this
+	}
+
 	css(property, value) {
 		if (typeof property !== 'string' || typeof value !== 'string') {
 			throw new Error('property and value must be strings')
