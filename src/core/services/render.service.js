@@ -2,14 +2,13 @@ import ChildComponent from '../component/child.component'
 
 class RenderService {
 	htmlToElement(html, components = [], styles) {
-		const template = document.createElement('template')
-		template.innerHTML = html.trim()
+		const parser = new DOMParser()
+		const doc = parser.parseFromString(html, 'text/html')
+		const element = doc.body.firstChild
 
-		const element = template.content.firstChild
-
-      if (styles) {
-         this.#applyModuleStyles(styles, element)
-      }
+		if (styles) {
+			this.#applyModuleStyles(styles, element)
+		}
 
 		this.#replaceComponentTags(element, components)
 
