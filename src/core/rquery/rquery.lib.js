@@ -27,6 +27,11 @@ class RQuery {
 		}
 	}
 
+	findAll(selector) {
+		const elements = this.element.querySelectorAll(selector)
+		return Array.from(elements).map(element => new RQuery(element))
+	}
+
 	/* INSERT */
 
 	append(childElement) {
