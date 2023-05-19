@@ -76,6 +76,19 @@ class RQuery {
 
 	/* FORM */
 
+	submit(onSubmit) {
+		if (this.element.tagName.toLowerCase() === 'form') {
+			this.element.addEventListener('submit', e => {
+				e.preventDefault()
+				onSubmit(e)
+			})
+		} else {
+			throw new Error('Element must be a form')
+		}
+
+		return this
+	}
+
 	input({ onInput, ...rest }) {
 		if (this.element.tagName.toLowerCase() !== 'input')
 			throw new Error('Element must be an input')
