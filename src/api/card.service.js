@@ -18,7 +18,7 @@ export class CardService {
 	}
 
 	updateBalance(amount, type, onSuccess) {
-		return redQuery({
+		return rtQuery({
 			path: `${this.#BASE_URL}/balance/${type}`,
 			method: 'PATCH',
 			body: { amount: +amount },

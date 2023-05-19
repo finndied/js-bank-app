@@ -92,6 +92,15 @@ class RQuery {
 
 	/* FORM */
 
+	value(newValue) {
+		if (typeof newValue === 'undefined') {
+			return this.element.value
+		} else {
+			this.element.value = newValue
+			return this
+		}
+	}
+
 	submit(onSubmit) {
 		if (this.element.tagName.toLowerCase() === 'form') {
 			this.element.addEventListener('submit', e => {
@@ -210,6 +219,14 @@ class RQuery {
 			this.element.setAttribute(attributeName, value)
 			return this
 		}
+	}
+	removeAttr(attrName) {
+		if (typeof attrName !== 'string') {
+			throw new Error('attrName must be a string')
+		}
+
+		this.element.removeAttribute(attrName)
+		return this
 	}
 }
 
